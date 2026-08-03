@@ -1,15 +1,15 @@
 services:
   postgres:
     image: postgres:18
-    container_name: patient-manager-db
+    container_name: healthcare_db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: patient_manager
+      POSTGRES_DB: healthcare
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:
