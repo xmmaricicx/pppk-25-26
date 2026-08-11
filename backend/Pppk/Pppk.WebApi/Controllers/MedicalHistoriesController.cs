@@ -24,7 +24,7 @@ namespace Pppk.WebApi.Controllers
         {
             var histories = await GetMedicalHistoryQuerry().ToListAsync();
 
-            var dto = histories.Select(h => h.ToDto()).ToList();
+            var dto = histories.Select(h => h.ToDto());
 
             return Ok(dto);
 

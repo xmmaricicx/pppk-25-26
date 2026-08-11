@@ -25,7 +25,7 @@ namespace Pppk.WebApi.Controllers
         {
             var patients = await GetPatientWithAddresessQuerry().ToListAsync();
             
-            var dto = patients.Select(p => p.ToDto()).ToList();
+            var dto = patients.Select(p => p.ToDto());
 
             return Ok(dto);
         }
