@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Pppk.WebApi.Dtos;
 using Pppk.WebApi.Mappings;
 using Pppk.WebApi.Models;
-using Pppk.WebApi.UserExtensions;
 
 
 namespace Pppk.WebApi.Controllers
@@ -20,19 +19,19 @@ namespace Pppk.WebApi.Controllers
         }
 
 
-        // GET: api/<PatientsController>
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PatientDto>>> GetAll()
         {
             var patients = await GetPatientWithAddresessQuerry().ToListAsync();
             
-            var response = patients.Select(p => p.ToDto()).ToList();
+            var dto = patients.Select(p => p.ToDto()).ToList();
 
-            return Ok(response);
+            return Ok(dto);
         }
 
 
-        // GET api/<PatientsController>/5
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<PatientDto>> GetById(int id)
         {
@@ -47,7 +46,7 @@ namespace Pppk.WebApi.Controllers
         }
 
 
-        // POST api/<PatientsController>
+        
         [HttpPost]
         public async Task<ActionResult<PatientDto>> Create(CreatePatientDto dto)
         {
@@ -100,7 +99,7 @@ namespace Pppk.WebApi.Controllers
 
 
 
-        // PUT api/<PatientsController>/5
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, UpdatePatientDto dto)
         {
@@ -136,7 +135,7 @@ namespace Pppk.WebApi.Controllers
             return NoContent();
         }
 
-        // DELETE api/<PatientsController>/5
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
