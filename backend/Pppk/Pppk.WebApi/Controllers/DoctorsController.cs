@@ -26,7 +26,7 @@ namespace Pppk.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Doctor>> GetAsync(int id)
+        public async Task<ActionResult<Doctor>> GetById(int id)
         {
             var doctor = await _context.Doctors.FindAsync(id);
             return Ok(doctor);

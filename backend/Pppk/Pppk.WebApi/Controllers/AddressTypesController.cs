@@ -24,7 +24,7 @@ namespace Pppk.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Specialty>> GetAsync(int id)
+        public async Task<ActionResult<Specialty>> GetById(int id)
         {
             var addressType = await _context.AddressTypes.FindAsync(id);
             return Ok(addressType);
