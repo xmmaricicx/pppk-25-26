@@ -8,11 +8,11 @@ namespace Pppk.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PrescriptionController : ControllerBase
+    public class PrescriptionsController : ControllerBase
     {
         private readonly HealthcareContext _context;
 
-        public PrescriptionController(HealthcareContext context)
+        public PrescriptionsController(HealthcareContext context)
         {
             _context = context;
         }

@@ -129,6 +129,19 @@ namespace Pppk.WebApi
 
             modelBuilder.Entity<SpecialtyExaminationType>(entity =>
             {
+
+                entity.HasData(
+                     new SpecialtyExaminationType { SpecialtyId = 1, ExaminationTypeId = 1 },
+                     new SpecialtyExaminationType { SpecialtyId = 1, ExaminationTypeId = 2 },
+                     new SpecialtyExaminationType { SpecialtyId = 1, ExaminationTypeId = 3 },
+                     new SpecialtyExaminationType { SpecialtyId = 1, ExaminationTypeId = 9 },
+                     new SpecialtyExaminationType { SpecialtyId = 2, ExaminationTypeId = 4 },
+                     new SpecialtyExaminationType { SpecialtyId = 2, ExaminationTypeId = 5 },
+                     new SpecialtyExaminationType { SpecialtyId = 3, ExaminationTypeId = 6 },
+                     new SpecialtyExaminationType { SpecialtyId = 4, ExaminationTypeId = 7 },
+                     new SpecialtyExaminationType { SpecialtyId = 5, ExaminationTypeId = 8 },
+                     new SpecialtyExaminationType { SpecialtyId = 6, ExaminationTypeId = 10 });
+
                 entity.HasKey(se => new { se.SpecialtyId, se.ExaminationTypeId });
 
                 entity.HasOne(se => se.Specialty)
