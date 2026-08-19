@@ -26,7 +26,7 @@ services:
       
   mongo:
     image: mongo:8.2
-    container_name: birds_monog
+    container_name: birds_mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
