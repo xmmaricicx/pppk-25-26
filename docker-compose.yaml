@@ -11,5 +11,30 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql
 
+  minio:
+    image: quay.io/minio/minio
+    container_name: birds_minio
+    environment:
+      MINIO_ROOT_USER: root
+      MINIO_ROOT_PASSWORD: password
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    command: server /home/shared --address :9000 --console-address :9001
+    volumes:
+      - minio_data:/home/shared
+      
+  mongo:
+    image: mongo:8.2
+    container_name: birds_monog
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/lib
 volumes:
   postgres_data:
+  minio_data:
+  mongo_data:
