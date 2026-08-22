@@ -1,5 +1,7 @@
 import uuid
 from pathlib import Path
+import json
+from io import BytesIO
 import requests
 import boto3
 from pymongo import MongoClient
@@ -70,6 +72,19 @@ for filepath in AUDIO_DIR.glob("*.mp3"):
 
 
     classification = response.json()
+
+    log = {
+        "filename": filepath.name,
+        "requst_url":CLASSIFY_URL,
+        "response_status": response.status_code,
+        "response_body": classification
+    }
+
+    log_json = json.dumps(log,indent=2)
+    log_bytes = BytesIO(log_json.encode("utf-8"))
+    log_name = f"logs/{object_name}.json"
+    s3.upload_fileobj(log_bytes,BUCKET,log_name)
+
     for detection in classification["results"]:
         classifications_collection.insert_one({
             "recording_id":recording_id,
